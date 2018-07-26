@@ -30,7 +30,14 @@ Feature: Java Feature
     Given I compare "string1" and "string2"
 
   @java7
+    Scenario: Java print page
     Given I print url for "site" page
+    Then I print url for "google" page
+
+    @java8
+    Scenario: Java print arrays
+     Given I print arrays
+
 
 
 

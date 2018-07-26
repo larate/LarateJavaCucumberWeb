@@ -8,8 +8,7 @@ import java.sql.SQLOutput;
 public class JavaStepDef {
     @Given("^I write java step$")
     public void iWriteJavaStep() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        System.out.println("some strings");
     }
 
     @Given("^I print \"([^\"]*)\" argument$")
@@ -73,7 +72,6 @@ public class JavaStepDef {
             System.out.println("strings are not equal");
         }
 
-
     }
 
 //    @Given("^I print \"([^\"]*)\" for \"([^\"]*)\" page$")
@@ -109,14 +107,26 @@ public class JavaStepDef {
 
         if (site.equalsIgnoreCase("google")) {
             System.out.println("http://www.google.com");
-        } else if (site.equalsIgnoreCase("sanple")){
-            System.out.println("");
+        } else if (site.equalsIgnoreCase("sample")){
+            System.out.println("http://skryabin.com/webdriver/html/sample.html");
 
         }else {
             System.out.println("unknown site ");
 
         }
+    }
 
+    @Given("^I print arrays$")
+    public void iPrintArrays() throws Throwable {
+        String [] groceryList ={"milk", "apple", "pear", "orange"};
+        System.out.println(groceryList[2]);
+        System.out.println(groceryList[3]);
+//        for (int i = 0; i < groceryList.length; i++){
+//            System.out.println(groceryList[i]);
+//        }
+        for (String element : groceryList){
+            System.out.println(element);
+        }
     }
 }
 

@@ -37,5 +37,10 @@ public class WebdriverStepdefs {
             System.out.println();
             System.out.println(element);
         }
+//        for(int i = 0; i<= logEntries.length; i++){
+//            System.out.println(logEntries[i]);
+//        }
     }
+
+
 }
