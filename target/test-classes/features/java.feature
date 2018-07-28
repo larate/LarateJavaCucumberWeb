@@ -38,6 +38,10 @@ Feature: Java Feature
     Scenario: Java print arrays
      Given I print arrays
 
+  @java9
+  Scenario: Open site
+    Given I go to the "sample" pabe
+   When I submit the form
 
 
 

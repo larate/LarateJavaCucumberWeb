@@ -2,6 +2,9 @@ package definitions;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import org.openqa.selenium.By;
+import support.TestContext;
 
 import java.sql.SQLOutput;
 
@@ -107,6 +110,7 @@ public class JavaStepDef {
 
         if (site.equalsIgnoreCase("google")) {
             System.out.println("http://www.google.com");
+            TestContext.getDriver().get("");
         } else if (site.equalsIgnoreCase("sample")){
             System.out.println("http://skryabin.com/webdriver/html/sample.html");
 
@@ -128,6 +132,27 @@ public class JavaStepDef {
             System.out.println(element);
         }
     }
+
+    @Given("^I go to the \"([^\"]*)\" pabe$")
+    public void iGoToThePabe(String page) throws Throwable {
+//      double[] array = {5.0, 7.9, 500, 3};
+//      double smallestNumber = Double.MAX_VALUE;
+//      for (double item : array){
+//          if (item < smallestNumber){
+//              smallestNumber = item;
+//          }
+//      }
+        if (page.equals("google")){
+            TestContext.getDriver().get("http://www.google.com");
+        }else if (page.equals("sample")){
+            TestContext.getDriver().get("http://skryabin.com/webdriver/html/sample.html");
+        }else if(page.equals("usps")){
+            TestContext.getDriver().get("https://www.usps.com/");
+        }
+
+    }
+
+
 }
 
 
