@@ -64,6 +64,8 @@ public class TestContext {
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.addArguments("--start-maximized");
                     chromeOptions.setExperimentalOption("prefs", chromePreferences);
+                    //chromeOptions.addExtensions(new File(System.getProperty("user.dir") + "/src/test/resources/downloads/ChroPath_v0.3.2.crx"));
+                    chromeOptions.addExtensions(new File(System.getProperty("user.dir") + "/src/test/resources/downloads/ChroPath_v0.3.2.crx"));
                     driver = new ChromeDriver(chromeOptions);
                     break;
                 case "firefox":

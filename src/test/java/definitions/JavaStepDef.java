@@ -4,6 +4,8 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
+import pages.Cat;
+import pages.Dog;
 import support.TestContext;
 
 import java.sql.SQLOutput;
@@ -155,6 +157,20 @@ public class JavaStepDef {
     }
 
 
+    @Given("^I create classes$")
+    public void iCreateClasses() throws Throwable {
+       Cat cat = new Cat("Charlie");
+        cat.sleep();
+        cat.eat("fish");
+        cat.walk();
+        cat.meow();
+
+        Dog dog = new Dog();
+        dog.sleep();
+        dog.eat("meat");
+        dog.walk();
+        dog.bark();
+    }
 }
 
 

@@ -1,6 +1,8 @@
 package definitions;
 
 import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
@@ -9,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.SampleForm;
 import support.TestContext;
 
 
@@ -119,5 +122,31 @@ public class FormStepdefs {
 
         String agreed = getDriver().findElement(By.xpath("//b[@name = 'agreedToPrivacyPolicy']")).getText();
         assertThat(agreed).isEqualTo("true");
+    }
+
+    @Given("^I open sample page$")
+    public void iOpenSamplePage() throws Throwable {
+        new SampleForm().open();
+    }
+
+    @When("^I fill out all page object fields$")
+    public void iFillOutAllPageObjectFields() throws Throwable {
+       SampleForm form = new SampleForm();
+       form.fillUsername("skryabin");
+       form.fillEmail("slava@skryabin.com");
+
+    }
+
+    @And("^I submit page object form$")
+    public void iSubmitPageObjectForm() throws Throwable {
+       SampleForm form = new SampleForm();
+       form.getClass();
+
+    }
+
+    @Then("^I verify all page object fields$")
+    public void iVerifyAllPageObjectFields() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 }

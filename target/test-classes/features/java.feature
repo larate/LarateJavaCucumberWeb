@@ -43,6 +43,11 @@ Feature: Java Feature
     Given I go to the "sample" pabe
    When I submit the form
 
+    @java10
+    Scenario: Classes
+      Given I create classes
+
+
 
 
 
