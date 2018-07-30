@@ -1,6 +1,7 @@
 // Created by Viacheslav (Slava) Skryabin 04/01/2018
 package support;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -31,6 +32,10 @@ public class TestContext {
 
     public static WebDriver getDriver() {
         return driver;
+    }
+
+    public  static JavascriptExecutor getExecutor(){
+        return (JavascriptExecutor) driver;
     }
 
     public static void setDriver(String browser) {

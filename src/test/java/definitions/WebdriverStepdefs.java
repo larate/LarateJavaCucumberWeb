@@ -16,7 +16,9 @@ public class WebdriverStepdefs {
             getDriver().get("http://ask.portnov.com/");
         }else if(page.equals("sample")){
             getDriver().get("http://skryabin.com/webdriver/html/sample.html");
-        }
+        } else if(page.equals("ups")){
+        getDriver().get("https://www.ups.com/us/en/Home.page");
+    }
         System.out.println(getDriver().getCurrentUrl());
         System.out.println(getDriver().getTitle());
         System.out.println(getDriver().getWindowHandle());

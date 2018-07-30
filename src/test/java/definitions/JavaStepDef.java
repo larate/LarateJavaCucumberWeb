@@ -147,8 +147,10 @@ public class JavaStepDef {
         }else if (page.equals("sample")){
             TestContext.getDriver().get("http://skryabin.com/webdriver/html/sample.html");
         }else if(page.equals("usps")){
-            TestContext.getDriver().get("https://www.usps.com/");
-        }
+        TestContext.getDriver().get("https://www.usps.com/");
+        }else if(page.equals("ups")){
+        TestContext.getDriver().get("https://www.ups.com/us/en/Home.page/");
+    }
 
     }
 

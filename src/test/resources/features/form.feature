@@ -7,3 +7,11 @@
       When I fill out all page fields
       And I submit the form
       Then I verify all filled out fields
+
+
+    @form2
+    Scenario: Submit and verify page object form
+      Given I open sample page
+      When I fill out all page object fields
+      And I submit page object form
+      Then I verify all page object fields
