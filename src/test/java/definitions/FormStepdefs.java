@@ -16,10 +16,32 @@ import support.TestContext;
 
 
 import static com.sun.javafx.runtime.async.BackgroundExecutor.getExecutor;
+import static support.TestContext.getData;
 import static support.TestContext.getDriver;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class FormStepdefs {
+
+    @Given("^I go to the \"([^\"]*)\" pabe$")
+    public void iGoToThePabe(String page) throws Throwable {
+//      double[] array = {5.0, 7.9, 500, 3};
+//      double smallestNumber = Double.MAX_VALUE;
+//      for (double item : array){
+//          if (item < smallestNumber){
+//              smallestNumber = item;
+//          }
+//      }
+        if (page.equals("google")){
+            TestContext.getDriver().get("http://www.google.com");
+        }else if (page.equals("sample")){
+            TestContext.getDriver().get("http://skryabin.com/webdriver/html/sample.html");
+        }else if(page.equals("usps")){
+            TestContext.getDriver().get("https://www.usps.com/");
+        }else if(page.equals("ups")){
+            TestContext.getDriver().get("https://www.ups.com/us/en/Home.page/");
+        }
+
+    }
     @When("^I fill out all page fields$")
     public void iWillOutAllPageFields() throws Throwable {
         getDriver().findElement(By.xpath("//input[@name='username']")).sendKeys("skryabin");
@@ -132,21 +154,25 @@ public class FormStepdefs {
     @When("^I fill out all page object fields$")
     public void iFillOutAllPageObjectFields() throws Throwable {
        SampleForm form = new SampleForm();
-       form.fillUsername("skryabin");
-       form.fillEmail("slava@skryabin.com");
+       form.fillUsername(getData("username"));
+       form.fillEmail(getData("email"));
+       form.fillPassword(getData("password"));
+       form.fillConfirmPassword(getData("comfirmPassword"));
+       form.fillName(getData("firstName"), "", getData("lastName"));
+       form.clickPrivacyPolicy();
+
 
     }
 
     @And("^I submit page object form$")
     public void iSubmitPageObjectForm() throws Throwable {
-       SampleForm form = new SampleForm();
-       form.getClass();
+      new SampleForm().clickSubmit();
+       //form.clickSubmit();
 
     }
 
     @Then("^I verify all page object fields$")
     public void iVerifyAllPageObjectFields() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+       Thread.sleep(10);
     }
 }

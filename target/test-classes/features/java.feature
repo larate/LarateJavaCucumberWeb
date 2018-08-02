@@ -4,6 +4,7 @@ Feature: Java Feature
   @java1
   Scenario: Java steps
     Given I write java step
+    And I print "Java" argument
 
   @java2
   Scenario: Java steps with argument
@@ -20,7 +21,7 @@ Feature: Java Feature
 
 
   @java5
-  Scenario: Java steps with mumvers
+  Scenario: Java steps with numvers
     Given I run operators with 3 and 5
     Given I run operators with 2 and 10
 
@@ -38,16 +39,13 @@ Feature: Java Feature
     Scenario: Java print arrays
      Given I print arrays
 
-  @java9
-  Scenario: Open site
-    Given I go to the "sample" pabe
-   When I submit the form
-
-    @java10
-    Scenario: Classes
+    @java9
+    Scenario: Create classes
       Given I create classes
 
-
+@java10
+   Scenario: HashMaps use
+  Given  I define map data
 
 
 

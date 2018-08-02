@@ -133,6 +133,12 @@
             <artifactId>snakeyaml</artifactId>
             <version>1.21</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.21</version>
+        </dependency>
     </dependencies>
 
     <repositories>

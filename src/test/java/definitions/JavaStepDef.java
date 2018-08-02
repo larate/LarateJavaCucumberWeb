@@ -9,6 +9,7 @@ import pages.Dog;
 import support.TestContext;
 
 import java.sql.SQLOutput;
+import java.util.HashMap;
 
 public class JavaStepDef {
     @Given("^I write java step$")
@@ -135,26 +136,7 @@ public class JavaStepDef {
         }
     }
 
-    @Given("^I go to the \"([^\"]*)\" pabe$")
-    public void iGoToThePabe(String page) throws Throwable {
-//      double[] array = {5.0, 7.9, 500, 3};
-//      double smallestNumber = Double.MAX_VALUE;
-//      for (double item : array){
-//          if (item < smallestNumber){
-//              smallestNumber = item;
-//          }
-//      }
-        if (page.equals("google")){
-            TestContext.getDriver().get("http://www.google.com");
-        }else if (page.equals("sample")){
-            TestContext.getDriver().get("http://skryabin.com/webdriver/html/sample.html");
-        }else if(page.equals("usps")){
-        TestContext.getDriver().get("https://www.usps.com/");
-        }else if(page.equals("ups")){
-        TestContext.getDriver().get("https://www.ups.com/us/en/Home.page/");
-    }
 
-    }
 
 
     @Given("^I create classes$")
@@ -170,6 +152,20 @@ public class JavaStepDef {
         dog.eat("meat");
         dog.walk();
         dog.bark();
+    }
+
+    @Given("^I define map data$")
+    public void iDefineMapData() throws Throwable {
+        HashMap<String, String> formData = new HashMap();
+        formData.put("username", "skryabin");
+        formData.put("email", "slava@skryabin.com");
+
+
+        System.out.println( formData.get("username"));
+        System.out.println( formData.get("email"));
+        System.out.println( formData.get("wrong"));
+        System.out.println( formData);
+
     }
 }
 

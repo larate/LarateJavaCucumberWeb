@@ -1,8 +1,10 @@
 package pages;
 
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import static support.TestContext.getDriver;
+import static support.TestContext.getExecutor;
 
 public class Page {
 
@@ -21,6 +23,10 @@ public class Page {
     }
     public void open (){
         getDriver().get(url);
+    }
+
+    public void clickWithJS(WebElement element){
+        getExecutor().executeScript("arguments[0].click",element);
     }
 
 

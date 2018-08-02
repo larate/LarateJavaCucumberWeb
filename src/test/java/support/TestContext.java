@@ -14,15 +14,32 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.yaml.snakeyaml.Yaml;
+
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 public class TestContext {
 
     private static WebDriver driver;
+    private static HashMap<String, String> data;
 
-    public static void initialize() {
+    public static void  addData(String key, String value){
+        data.put(key, value);
+    }
+    public static String getData(String key){
+        return  data.get(key);
+    }
+    public static HashMap<String, String> loadFromFile() throws Exception {
+        File file = new File(System.getProperty("user.dir")+"\\src\\test\\resources\\downloads\\data.yaml");
+        FileInputStream stream = new FileInputStream(file);
+       return new Yaml().load(stream);
+    }
+
+    public static void initialize() throws Exception{
+        data = loadFromFile();
         setDriver("chrome");
     }
 
@@ -34,7 +51,7 @@ public class TestContext {
         return driver;
     }
 
-    public  static JavascriptExecutor getExecutor(){
+    public static JavascriptExecutor getExecutor(){
         return (JavascriptExecutor) driver;
     }
 
