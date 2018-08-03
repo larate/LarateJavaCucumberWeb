@@ -1,6 +1,8 @@
 package pages;
 
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -26,21 +28,42 @@ public class Page {
     public void open (){
         getDriver().get(url);
     }
-
-    public  void  waitForVisible(WebElement element){
-        new WebDriverWait(getDriver(),10).until(ExpectedConditions.visibilityOf(element));
+    public void sendKeys(WebElement element, String text){
+        waitForVisible(element);
+        element.sendKeys(text);
     }
 
-    public void click(WebElement element){
-        waitForVisible(element);
-        clickWithJS(element);
+    public void moveToElement(WebElement element){
+        new Actions(getDriver()).moveToElement(element).perform();
     }
 
 
     public void clickWithJS(WebElement element){
 
-          getExecutor().executeScript("arguments[0].click()", element);
-   }
+        getExecutor().executeScript("arguments[0].click();", element);
+    }
+
+
+    public  void  waitForVisible(WebElement element){
+        new WebDriverWait(getDriver(),10).until(ExpectedConditions.visibilityOf(element));
+    }
+    public  void waitForClickable(WebElement element){
+        new WebDriverWait(getDriver(), 10).until((ExpectedConditions.elementToBeClickable(element)));
+
+    }
+    public void click(WebElement element){
+        waitForVisible(element);
+        waitForClickable(element);
+        try{
+            element.click();
+        }catch (WebDriverException e){
+            clickWithJS(element);
+        }
+
+
+    }
+
+
 
 
 }

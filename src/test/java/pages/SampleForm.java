@@ -33,20 +33,26 @@ public class SampleForm extends Page {
     @FindBy(xpath = "//input[@name='agreedToPrivacyPolicy']")
     private WebElement privacyPolicy;
 
+
+
     public void fillUsername(String text) {
-        username.sendKeys(text);
+        sendKeys(username, text);
+
     }
 
     public void fillEmail(String text) {
-        email.sendKeys(text);
+
+        sendKeys(email, text);
     }
 
     public void fillPassword(String text) {
-        password.sendKeys(text);
+        sendKeys(password, text);
+
     }
 
     public void fillConfirmPassword(String text) {
-        confirmPassword.sendKeys(text);
+        sendKeys(confirmPassword, text);
+
     }
 
 
@@ -59,7 +65,7 @@ public class SampleForm extends Page {
 
 
     public void fillName(String firstName, String middleName, String lastName) {
-        name.click();
+        click(name);
 
         SampleFormNameDialog dialog = new SampleFormNameDialog();
         dialog.fillFirstName(firstName);
