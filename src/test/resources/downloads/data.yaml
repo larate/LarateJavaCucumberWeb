@@ -4,3 +4,5 @@ password: password1
 comfirmPassword: password1
 firstName: Natasha
 lastName:  Smith
+
+savedPasswordPlaceholder: "[entered]"

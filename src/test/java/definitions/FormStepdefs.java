@@ -12,6 +12,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.SampleForm;
+import pages.SampleVerify;
 import support.TestContext;
 
 
@@ -171,8 +172,19 @@ public class FormStepdefs {
 
     }
 
+
     @Then("^I verify all page object fields$")
     public void iVerifyAllPageObjectFields() throws Throwable {
-       Thread.sleep(10);
+        SampleVerify verifyPage = new SampleVerify();
+        String result = verifyPage.getResult();
+        assertThat(result).contains(getData("username"));
+        assertThat(result).contains(getData("email"));
+        assertThat(result).contains(getData("username"));
+        assertThat(result).contains(getData("firstName"));
+        assertThat(result).contains(getData("lastName"));
+
+        assertThat(verifyPage.getPassword()).contains(getData("savedPasswordPlaceholder"));
+
+       Thread.sleep(500);
     }
 }

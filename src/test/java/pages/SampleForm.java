@@ -49,9 +49,11 @@ public class SampleForm extends Page {
         confirmPassword.sendKeys(text);
     }
 
-    public void clickPrivacyPolicy(){
-        clickWithJS(privacyPolicy);
 
+
+    public void clickPrivacyPolicy() {
+       click(privacyPolicy);
+        // getExecutor().executeScript("arguments[0].click()", privacyPolicy);
 
     }
 
@@ -68,8 +70,9 @@ public class SampleForm extends Page {
 
 
     public void clickSubmit() {
-//        submitButton.click();
-        clickWithJS(submitButton);
+
+       click(submitButton);
+//        getExecutor().executeScript("arguments[0].click()", submitButton);
     }
 
 
