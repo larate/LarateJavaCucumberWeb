@@ -160,10 +160,24 @@ public class FormStepdefs {
        form.fillPassword(getData("password"));
        form.fillConfirmPassword(getData("comfirmPassword"));
        form.fillName(getData("firstName"), "", getData("lastName"));
+       form.fillPhome(getData("phone"));
+       form.selectCountryOfOrigin(getData("countryOfOrigin"));
+        form.chooseGender(getData("gender"));
+        form.fillAdderaa("address");
+
+        form.clickPrivacyPolicy();
+        form.acceptThitdPartyAgreenent();
+
+//        form.selectDateOfBirth("day", "month", "year");
+
+
+
+
+//       form.fillPhome(getData("countryOfOrigin"));
+//        //input[@name='gender'][@value='male']"
        form.clickPrivacyPolicy();
 
-
-    }
+       }
 
     @And("^I submit page object form$")
     public void iSubmitPageObjectForm() throws Throwable {
@@ -171,6 +185,7 @@ public class FormStepdefs {
        //form.clickSubmit();
 
     }
+
 
 
     @Then("^I verify all page object fields$")
@@ -182,6 +197,10 @@ public class FormStepdefs {
         assertThat(result).contains(getData("username"));
         assertThat(result).contains(getData("firstName"));
         assertThat(result).contains(getData("lastName"));
+        assertThat(result).contains(getData("phone"));
+        assertThat(result).contains(getData("gender"));
+       assertThat(result).contains(getData(""));
+
 
         assertThat(verifyPage.getPassword()).contains(getData("savedPasswordPlaceholder"));
 

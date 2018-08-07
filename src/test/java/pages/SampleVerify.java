@@ -17,6 +17,20 @@ public class SampleVerify extends Page {
     @FindBy(xpath = "//b[@name='password']")
     WebElement passwoResult;
 
+    @FindBy(xpath = "//b[@name='password']")
+    WebElement allowedToContact;
+
+    @FindBy(xpath = "//body[@class='ng-scope']")
+    WebElement agreedToPrivacyPolicy;
+
+    public String getallowedToContact(){
+        return  allowedToContact.getText();
+    }
+
+    public String getAgreedToPrivacyPolicy(){
+        return  agreedToPrivacyPolicy.getText();
+    }
+
     public String getResult() {
         waitForVisible(result);
         return result.getText();

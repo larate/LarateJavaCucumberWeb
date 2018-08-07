@@ -10,7 +10,6 @@ public class LookupByZip extends UspsHeader {
 
     public  void clickFindByAdress(){
     click(findByAddres);
-
     }
 
 }
