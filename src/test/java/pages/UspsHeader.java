@@ -21,21 +21,23 @@ public class UspsHeader extends Page{
     @FindBy(xpath = "//a[contains(@href,'byaddress')][contains(@class,'code-address')]")
     private WebElement findByAddres;
 
-    public  void clickFindByAdress(){
-    click(findByAddres);
-    }
+
 
     @FindBy(xpath = "//a[@role='menuitem'][contains(text(),'Calculate a Price')]" )
     private WebElement calculatePrice;
 
 
-   public void mouseOverMailAndShip(){
+   private void mouseOverMailAndShip(){
         moveToElement(mailAndShip);
     }
 
     public  void goToCalculatePrice() {
         mouseOverMailAndShip();
         click(calculatePrice);
+    }
+
+    public  void clickFindByAdress(){
+        click(findByAddres);
     }
 
    public void clickLookupByZip(){

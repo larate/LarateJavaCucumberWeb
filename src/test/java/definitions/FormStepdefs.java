@@ -163,19 +163,13 @@ public class FormStepdefs {
        form.fillPhome(getData("phone"));
        form.selectCountryOfOrigin(getData("countryOfOrigin"));
         form.chooseGender(getData("gender"));
+        form.clickPrivacyPolicy();
+
         form.fillAdderaa("address");
 
-        form.clickPrivacyPolicy();
         form.acceptThitdPartyAgreenent();
 
-//        form.selectDateOfBirth("day", "month", "year");
-
-
-
-
-//       form.fillPhome(getData("countryOfOrigin"));
-//        //input[@name='gender'][@value='male']"
-       form.clickPrivacyPolicy();
+       form.selectDateOfBirth("day", "month", "year");
 
        }
 
@@ -199,7 +193,7 @@ public class FormStepdefs {
         assertThat(result).contains(getData("lastName"));
         assertThat(result).contains(getData("phone"));
         assertThat(result).contains(getData("gender"));
-       assertThat(result).contains(getData(""));
+       assertThat(result).contains(getData("countryOfOrigin"));
 
 
         assertThat(verifyPage.getPassword()).contains(getData("savedPasswordPlaceholder"));

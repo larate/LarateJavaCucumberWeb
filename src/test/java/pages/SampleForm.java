@@ -37,56 +37,53 @@ public class SampleForm extends Page {
     private WebElement privacyPolicy;
 
     @FindBy(xpath = "//input[@name='phone']")
-    private  WebElement phoneNumber;
+    private WebElement phoneNumber;
 
     @FindBy(xpath = "//select[@name='countryOfOrigin']")
-    private  WebElement countryOfOrigin;
+    private WebElement countryOfOrigin;
 
     @FindBy(xpath = "//input[@name='allowedToContact']")
-    private  WebElement allowToContact;
+    private WebElement allowToContact;
 
     @FindBy(xpath = "//textarea[@id='address']")
-    private  WebElement address;
+    private WebElement address;
 
     @FindBy(xpath = "//button[@id='thirdPartyButton']")
-    private  WebElement thirdPartyButton;
+    private WebElement thirdPartyButton;
 
     @FindBy(xpath = "//input[@id='dateOfBirth']")
-    private  WebElement dateOfBirth;
+    private WebElement dateOfBirth;
 
 
-
-    public void selectDateOfBirth(String day, String month, String year){
+    public void selectDateOfBirth(String day, String month, String year) {
         click(dateOfBirth);
         new DatePicker().selectDate(day, month, year);
     }
 
-    public  void  acceptThitdPartyAgreenent(){
+    public void acceptThitdPartyAgreenent() {
         click(thirdPartyButton);
         getDriver().switchTo().alert().accept();
     }
 
-    public  void  declineThitdPartyAgreenent() {
+    public void declineThitdPartyAgreenent() {
         click(thirdPartyButton);
         getDriver().switchTo().alert().dismiss();
     }
 
-    public void fillAdderaa(String address){
+    public void fillAdderaa(String address) {
         sendKeys(this.address, address);
     }
 
-    public void clickAllowToCibtact(){
+    public void clickAllowToCibtact() {
         allowToContact.click();
     }
 
 
- public  void selectCountryOfOrigin(String value){
-     new Select(countryOfOrigin).selectByValue(value);
- }
 
-public void fillPhome(String text){
-    sendKeys(phoneNumber, text);
-}
+
+    public void fillPhome(String text) {
+        sendKeys(phoneNumber, text);
+    }
 
     public void fillUsername(String text) {
         sendKeys(username, text);
@@ -110,16 +107,19 @@ public void fillPhome(String text){
 
 
     public void clickPrivacyPolicy() {
-       click(privacyPolicy);
+        click(privacyPolicy);
         // getExecutor().executeScript("arguments[0].click()", privacyPolicy);
     }
 
-    public  void chooseGender(String value){
-//     WebElement gender = getDriver().findElement(By.xpath("//input[@name='gender'][@value='" + value + "']"));
+    public void chooseGender(String value) {
+//        WebElement gender = getDriver().findElement(By.xpath("//input[@name='gender'][@value='" + value + "']"));
+//        WebElement gender = getByXpath("//input[@name='gender'][@value='" + value + "']");
         click(getByXpath("//input[@name='gender'][@value='" + value + "']"));
     }
 
-
+    public void selectCountryOfOrigin(String value) {
+        new Select(countryOfOrigin).selectByValue(value);
+    }
 
     public void fillName(String firstName, String middleName, String lastName) {
         click(name);
@@ -134,7 +134,7 @@ public void fillPhome(String text){
 
     public void clickSubmit() {
 
-       click(submitButton);
+        click(submitButton);
 //        getExecutor().executeScript("arguments[0].click()", submitButton);
     }
 

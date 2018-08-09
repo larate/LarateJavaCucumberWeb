@@ -11,10 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.ByAdressForm;
-import pages.LookupByZip;
-import pages.PriceCalculator;
-import pages.UspsHeader;
+import pages.*;
 import support.TestContext;
 
 import java.util.List;
@@ -286,7 +283,6 @@ public class UspsStepDefs extends UspsHeader{
     @When("^I go to Lookup ZIP page object by address$")
     public void iGoToLookupZIPPageObjectByAddress() throws Throwable {
         UspsHeader usps = new UspsHeader();
-        usps.mouseOverMailAndShip();
         usps.clickLookupByZip();
         new LookupByZip().clickFindByAdress();
         Thread.sleep(500);
@@ -305,22 +301,36 @@ public class UspsStepDefs extends UspsHeader{
 
     @Then("^I validate \"([^\"]*)\" zip code exists in the result page object$")
     public void iValidateZipCodeExistsInTheResultPageObject(String zip) throws Throwable {
-//       String results = new ByAddressResult().getSearchResultText();
+//       String results = new ByAdressForm().getSearchResultText();
 //        assertThat(results).contains(zip);
     }
 
     @When("^I go to Calculate Price page object$")
     public void iGoToCalculatePricePageObject() throws Throwable {
-        UspsHeader usps = new UspsHeader();
-        usps.goToCalculatePrice();
+        new UspsHeader().goToCalculatePrice();
 
 
     }
 
     @And("^I select \"([^\"]*)\" with \"([^\"]*)\" shape And I define \"([^\"]*)\" quantity page object$")
-    public void iSelectWithShapeAndIDefineQuantityPageObject(String arg0, String arg1, String arg2) throws Throwable {
+    public void iSelectWithShapeAndIDefineQuantityPageObject(String selectText, String shape, String quantety) throws Throwable {
+
         PriceCalculator priceCalculator = new PriceCalculator();
-//        priceCalculator.setCountry(getData(selectText));
+
+       priceCalculator.selectCountry(getData(selectText));
+       priceCalculator.chooseShape(shape);
+
+       new PostcardCalculator().fillQuantity(quantety);
+
+
+    }
+
+    @Then("^I calculate the price and validate cost is \"([^\"]*)\" page object$")
+    public void iCalculateThePriceAndValidateCostIsPageObject(String cost) throws Throwable {
+        PostcardCalculator postcardCalculator = new PostcardCalculator();
+        postcardCalculator.clickCalculate();
+        assertThat(postcardCalculator.getTotal()).isEqualTo(cost);
+
 
     }
 }
