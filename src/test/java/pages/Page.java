@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -35,8 +36,8 @@ public class Page {
 
     public void moveToElement(WebElement element){
         new Actions(getDriver()).moveToElement(element).perform();
-    }
 
+   }
 
     public void clickWithJS(WebElement element){
 
@@ -51,6 +52,10 @@ public class Page {
         new WebDriverWait(getDriver(), 10).until((ExpectedConditions.elementToBeClickable(element)));
 
     }
+    public  WebElement getByXpath(String myXpath){
+        return  getDriver().findElement(By.xpath(myXpath));
+    }
+
     public void click(WebElement element){
         waitForVisible(element);
         waitForClickable(element);
@@ -59,9 +64,8 @@ public class Page {
         }catch (WebDriverException e){
             clickWithJS(element);
         }
-
-
     }
+
 
 
 

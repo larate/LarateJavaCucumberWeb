@@ -8,7 +8,7 @@ public class ByAdressForm extends UspsHeader{
     @FindBy(xpath = "//input[@id='tAddress']")
     private WebElement streetAddress;
 
-    @FindBy(linkText = "//input[@id='tCity']")
+    @FindBy(xpath = "//input[@id='tCity']")
     private  WebElement city;
 
     @FindBy(xpath = "//select[@id='tState']")
@@ -21,9 +21,14 @@ public class ByAdressForm extends UspsHeader{
         sendKeys(streetAddress, text);
 
     }
-
     public  void  fillStreetCity(String text){
         sendKeys(city, text);
 
+    }
+    public  void  fillStreetState(String text){
+        sendKeys(state, text);
+    }
+    public void  clickFindButton(){
+        findButton.click();
     }
 }

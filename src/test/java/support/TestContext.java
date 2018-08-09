@@ -31,7 +31,8 @@ public class TestContext {
     }
     public static String getData(String key){
         return  data.get(key);
-    }
+    }//reads data from the file
+
     public static HashMap<String, String> loadFromFile() throws Exception {
         File file = new File(System.getProperty("user.dir")+"\\src\\test\\resources\\downloads\\data.yaml");
         FileInputStream stream = new FileInputStream(file);

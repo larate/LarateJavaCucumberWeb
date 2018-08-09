@@ -18,12 +18,28 @@ public class UspsHeader extends Page{
     @FindBy(xpath = "//li[@class='tool-zip']//a")
     private WebElement lookupByZip;
 
+    @FindBy(xpath = "//a[contains(@href,'byaddress')][contains(@class,'code-address')]")
+    private WebElement findByAddres;
 
-   public void mousOverMailAndShip(){
-       moveToElement(mailAndShip);
-   }
+    public  void clickFindByAdress(){
+    click(findByAddres);
+    }
+
+    @FindBy(xpath = "//a[@role='menuitem'][contains(text(),'Calculate a Price')]" )
+    private WebElement calculatePrice;
+
+
+   public void mouseOverMailAndShip(){
+        moveToElement(mailAndShip);
+    }
+
+    public  void goToCalculatePrice() {
+        mouseOverMailAndShip();
+        click(calculatePrice);
+    }
 
    public void clickLookupByZip(){
+        mouseOverMailAndShip();
        click(lookupByZip);
    }
 

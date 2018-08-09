@@ -4,5 +4,10 @@ password: password1
 comfirmPassword: password1
 firstName: Natasha
 lastName:  Smith
-
+phone:     "12345678"
+countryOfOrigin: Japan
+gender: male
 savedPasswordPlaceholder: "[entered]"
+address: "123 Main street"
+
+"United Kingdom": "1020"
