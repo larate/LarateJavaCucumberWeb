@@ -48,6 +48,7 @@ public class SampleForm extends Page {
     @FindBy(xpath = "//textarea[@id='address']")
     private WebElement address;
 
+
     @FindBy(xpath = "//button[@id='thirdPartyButton']")
     private WebElement thirdPartyButton;
 
@@ -62,20 +63,20 @@ public class SampleForm extends Page {
 
     public void acceptThitdPartyAgreenent() {
         click(thirdPartyButton);
-        getDriver().switchTo().alert().accept();
+        getDriver().switchTo().alert().accept(); //accept
     }
 
     public void declineThitdPartyAgreenent() {
         click(thirdPartyButton);
-        getDriver().switchTo().alert().dismiss();
+        getDriver().switchTo().alert().dismiss(); //dismiss
     }
 
-    public void fillAdderaa(String address) {
+    public void fillAddress(String address) {
         sendKeys(this.address, address);
     }
 
-    public void clickAllowToCibtact() {
-        allowToContact.click();
+    public void clickAllowedToContact() {
+        click(allowToContact);
     }
 
 

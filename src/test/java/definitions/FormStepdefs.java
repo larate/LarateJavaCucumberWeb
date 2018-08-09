@@ -1,6 +1,5 @@
 package definitions;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -16,7 +15,6 @@ import pages.SampleVerify;
 import support.TestContext;
 
 
-import static com.sun.javafx.runtime.async.BackgroundExecutor.getExecutor;
 import static support.TestContext.getData;
 import static support.TestContext.getDriver;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -164,12 +162,12 @@ public class FormStepdefs {
        form.selectCountryOfOrigin(getData("countryOfOrigin"));
         form.chooseGender(getData("gender"));
         form.clickPrivacyPolicy();
-
-        form.fillAdderaa("address");
-
+        form.clickAllowedToContact();
         form.acceptThitdPartyAgreenent();
+        form.fillAddress(getData("address"));
 
-       form.selectDateOfBirth("day", "month", "year");
+
+       form.selectDateOfBirth("2", "8", "2018");
 
        }
 
@@ -194,6 +192,10 @@ public class FormStepdefs {
         assertThat(result).contains(getData("phone"));
         assertThat(result).contains(getData("gender"));
        assertThat(result).contains(getData("countryOfOrigin"));
+       assertThat(result).contains(getData("address"));
+       assertThat(verifyPage.getAgreedToPrivacyPolicy()).contains("true");
+       assertThat(verifyPage.getallowedToContact()).contains("true");
+       assertThat(verifyPage.getAcceptThirdPartyAgreement().contains("accepted"));
 
 
         assertThat(verifyPage.getPassword()).contains(getData("savedPasswordPlaceholder"));

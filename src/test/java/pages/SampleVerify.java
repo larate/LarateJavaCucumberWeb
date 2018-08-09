@@ -17,11 +17,18 @@ public class SampleVerify extends Page {
     @FindBy(xpath = "//b[@name='password']")
     WebElement passwoResult;
 
-    @FindBy(xpath = "//b[@name='password']")
+    @FindBy(xpath = "//b[@name='allowedToContact']")
     WebElement allowedToContact;
 
-    @FindBy(xpath = "//body[@class='ng-scope']")
+    @FindBy(xpath = "//b[@name='agreedToPrivacyPolicy']")
     WebElement agreedToPrivacyPolicy;
+
+    @FindBy(xpath = "//b[@name='thirdPartyAgreement']")
+    WebElement acceptThirdPartyAgreement;
+
+public  String getAcceptThirdPartyAgreement(){
+    return  acceptThirdPartyAgreement.getText();
+}
 
     public String getallowedToContact(){
         return  allowedToContact.getText();
