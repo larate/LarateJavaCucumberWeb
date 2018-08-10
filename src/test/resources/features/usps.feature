@@ -82,3 +82,11 @@ Feature: Usps functions
     When I go to Calculate Price page object
     And I select "United Kingdom" with "Postcard" shape And I define "2" quantity page object
     Then I calculate the price and validate cost is "$2.30" page object
+
+
+  @usps10
+  Scenario: Wrong store id does not match page object
+    Given I go to usps page object
+    When I go to Postal Store tab
+    And I enter "12345" into store search page object
+    Then I search and validate no products found page object
